@@ -14,7 +14,16 @@ class MessageController {
 
         return response.json(message);
     }
-    
+
+    async showByUser(request: Request, response: Response) {
+        const { id } = request.params;
+
+        const messageService = new MessageService;
+
+        const list = await messageService.listByUser(id);
+
+        return response.json(list);
+    }
 }
 
 export { MessageController }
